@@ -10,7 +10,7 @@ public interface BookDAO {
 
 	List<Book> findAll();
 
-	Book update(Book book);
+	void update(Book book);
 
 	void delete(String isbn);
 	

@@ -31,9 +31,8 @@ public class BookDAOImpl implements BookDAO {
 		return books.stream().collect(Collectors.toList());
 	}
 
-	public Book update(Book book) {
-		// TODO Auto-generated method stub
-		return null;
+	public void update(Book book) {
+		books.add(book);
 	}
 
 	public void delete(String isbn) {
@@ -47,8 +46,9 @@ public class BookDAOImpl implements BookDAO {
 	}
 
 	public Book create(Book book) {
-		books.add(book);
-		return get(book.getIsbn());
-
+		if (books.add(book))
+			return get(book.getIsbn());
+		else
+			return null;
 	}
 }

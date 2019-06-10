@@ -21,8 +21,17 @@ public class BookService {
 	public Book getBookByISBN(String isbn) {
 		return dao.get(isbn);
 	}
-	
+
 	public Book addBook(Book book) {
 		return dao.create(book);
+	}
+
+	public void updateBook(String isbn, Book book) {
+		dao.delete(isbn);
+		dao.update(book);
+	}
+	
+	public void deleteBook(String isbn) {
+		dao.delete(isbn);
 	}
 }
