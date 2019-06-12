@@ -29,7 +29,7 @@ import com.johnny.restjaxrsjee8.service.BookService;
 public class BookResource {
 
 	@Inject
-	BookService service;
+	private BookService service;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
