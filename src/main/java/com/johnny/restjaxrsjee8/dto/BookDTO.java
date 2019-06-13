@@ -1,12 +1,20 @@
 package com.johnny.restjaxrsjee8.dto;
 
+import javax.validation.constraints.NotEmpty;
+
 public class BookDTO {
 
+	@NotEmpty(message = "Field ISBN cannot be empty.")
 	private String isbn;
+	@NotEmpty(message = "Field NAME cannot be empty.")
 	private String name;
+	@NotEmpty(message = "Field AUTHOR cannot be empty.")
 	private String author;
+	@NotEmpty(message = "Field YEAR cannot be empty.")
 	private String year;
+	@NotEmpty(message = "Field GENRE cannot be empty.")
 	private String genre;
+	@NotEmpty(message = "Field PUBLISHER cannot be empty.")
 	private String publisher;
 
 	public BookDTO() {

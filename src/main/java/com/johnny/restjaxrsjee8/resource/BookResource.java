@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -48,7 +49,7 @@ public class BookResource {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response create(BookDTO book) {
+	public Response create(@Valid BookDTO book) {
 		Book createdBook = service.addBook(BookFactory.getBook(book));
 		if (createdBook == null)
 			throw new BookAlreadyExistsException("Book already exists!");
@@ -60,7 +61,7 @@ public class BookResource {
 	@PUT
 	@Path("/{isbn}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response update(@PathParam("isbn") String isbn, BookDTO book) {
+	public Response update(@PathParam("isbn") String isbn, @Valid BookDTO book) {
 		if (service.getBookByISBN(isbn) == null)
 			throw new BookDoesNotExistException("Book does not exist!");
 		service.updateBook(isbn, BookFactory.getBook(book));
